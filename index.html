@@ -25,6 +25,7 @@
         body { font-feature-settings: "palt"; }
         /* 切り替え用の基本スタイル */
         .screen-section { display: none; }
+        /* アニメーション付きで表示 */
         .active-screen { display: block; animation: fadeIn 0.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -42,31 +43,28 @@
         </div>
         </header>
 
-    <nav id="sidebar" class="fixed inset-0 bg-navy-900 text-white z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col">
+    <nav id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-navy-900 text-white z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
         <div class="p-5 border-b border-navy-800 flex justify-between items-center">
             <span class="font-bold tracking-widest text-lg">MENU</span>
-            <button onclick="toggleMenu()" class="text-slate-400 p-2 hover:text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+            <button onclick="toggleMenu()" class="text-slate-400 p-2 hover:text-white">✕</button>
         </div>
-        <div class="flex-1 py-8 px-4 overflow-y-auto space-y-4">
-            <button onclick="switchScreen('hero')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">00 TOP</button>
-            <button onclick="switchScreen('origin')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">01 Origin Story</button>
-            <button onclick="switchScreen('case')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">02 Case Study</button>
-            <button onclick="switchScreen('value')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">03 Why Me</button>
-            <button onclick="switchScreen('promise')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">04 My Promise</button>
+        <div class="flex-1 py-4 px-2 overflow-y-auto space-y-2">
+            <button onclick="switchScreen('hero')" class="w-full text-left px-4 py-3 rounded hover:bg-navy-800 font-bold text-sm">00 TOP</button>
+            <button onclick="switchScreen('origin')" class="w-full text-left px-4 py-3 rounded hover:bg-navy-800 font-bold text-sm">01 Origin Story</button>
+            <button onclick="switchScreen('case')" class="w-full text-left px-4 py-3 rounded hover:bg-navy-800 font-bold text-sm">02 Case Study</button>
+            <button onclick="switchScreen('value')" class="w-full text-left px-4 py-3 rounded hover:bg-navy-800 font-bold text-sm">03 Why Me</button>
+            <button onclick="switchScreen('promise')" class="w-full text-left px-4 py-3 rounded hover:bg-navy-800 font-bold text-sm">04 My Promise</button>
         </div>
-        <div class="p-6 text-sm text-slate-500 border-t border-navy-800 text-center">
+        <div class="p-4 text-xs text-slate-500 border-t border-navy-800 text-center">
             &copy; 2024 AI Adoption Partner
         </div>
     </nav>
+    <div id="overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
-    <main class="pt-20 pb-12 px-6 min-h-screen">
+    <main class="pt-20 pb-20 px-6 min-h-screen">
         
         <section id="hero" class="screen-section active-screen">
-            <div class="max-w-md mx-auto text-center pt-8">
+            <div class="max-w-md mx-auto text-center pt-4">
                 
                 <div class="inline-block bg-navy-900 text-white px-5 py-2 rounded-full text-sm font-bold tracking-widest mb-8 shadow-lg">
                     For 株式会社Low Code
@@ -160,7 +158,7 @@
                     
                     <div class="mt-8 pt-8 border-t border-navy-800">
                         <h4 class="text-lg font-bold mb-6">Anyone Can Do This.</h4>
-                        <button id="reveal-btn" onclick="revealContent()" class="bg-amber-500 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-amber-600 transition w-full">
+                        <button id="reveal-btn" onclick="revealContent()" class="bg-amber-500 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-amber-600 transition w-full transform active:scale-95">
                             ネタばらしを見る
                         </button>
                         <div id="hidden-content" class="hidden mt-6 bg-white text-slate-800 p-6 rounded-lg text-left">
@@ -182,11 +180,14 @@
         // メニューの開閉
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
             
             if (sidebar.classList.contains('-translate-x-full')) {
                 sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
             } else {
                 sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
             }
         }
 
@@ -201,7 +202,7 @@
             const target = document.getElementById(id);
             if (target) {
                 target.classList.add('active-screen');
-                // ページの一番上にスクロール
+                // ページの一番上にスクロール（これが重要）
                 window.scrollTo(0, 0);
             }
             
