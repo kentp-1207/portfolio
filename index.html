@@ -26,66 +26,43 @@
     </script>
     <style>
         body { font-feature-settings: "palt"; }
-        /* アプリ風の切り替えロジック */
-        .screen-section { display: none; min-height: 100vh; padding-top: 80px; padding-bottom: 40px; }
-        .active-screen { display: block; animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* 画面切り替えアニメーション */
+        .screen-section { display: none; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        .active-screen { display: flex; animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
         }
         
         .marker-highlight {
             background: linear-gradient(transparent 60%, rgba(245, 158, 11, 0.4) 60%);
         }
+
+        /* パルスアニメーション */
+        .pulse-btn {
+            animation: pulse-orange 2s infinite;
+        }
+        @keyframes pulse-orange {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-hidden">
 
-    <header class="fixed top-0 w-full z-50 bg-navy-900/95 backdrop-blur border-b border-navy-800 h-16 flex items-center justify-between px-5 transition-all">
-        <div class="flex items-center gap-3">
-            <h1 class="font-bold text-white tracking-widest text-sm">PORTFOLIO</h1>
-        </div>
-        <button onclick="toggleMenu()" class="text-white p-2 hover:bg-white/10 rounded-full transition-colors group">
-            <span class="text-xs font-bold mr-2 text-amber-500 group-hover:text-white transition-colors">MENU</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
-    </header>
+    <main class="w-full h-screen relative">
 
-    <nav id="sidebar" class="fixed inset-0 z-[60] bg-navy-900 text-white transform translate-x-full transition-transform duration-300 flex flex-col">
-        <div class="h-16 flex items-center justify-between px-5 border-b border-navy-800">
-            <span class="font-bold tracking-widest text-lg text-amber-500">MENU</span>
-            <button onclick="toggleMenu()" class="p-2 hover:bg-white/10 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-        <div class="flex-1 overflow-y-auto p-6 space-y-4 flex flex-col justify-center">
-            <button onclick="switchScreen('hero')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">00 TOP</button>
-            <button onclick="switchScreen('origin')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">01 Origin</button>
-            <button onclick="switchScreen('works')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">02 Works</button>
-            <button onclick="switchScreen('logic')" class="text-2xl font-black text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">03 My Logic</button>
-            <button onclick="switchScreen('value')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">04 Why Me</button>
-            <button onclick="switchScreen('promise')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">05 Promise</button>
-        </div>
-        <div class="p-6 text-center text-slate-500 text-xs">
-            For 株式会社Low Code
-        </div>
-    </nav>
-
-    <main class="w-full min-h-screen bg-slate-50 relative">
-
-        <section id="hero" class="screen-section active-screen bg-navy-900 text-white flex flex-col justify-center items-center relative overflow-hidden">
+        <section id="hero" class="screen-section active-screen bg-navy-900 text-white flex-col justify-center items-center relative overflow-hidden text-center">
             <div class="absolute inset-0 bg-hero-pattern opacity-30"></div>
             <div class="absolute top-0 right-0 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
             <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-600/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
 
-            <div class="max-w-md w-full px-6 relative z-10 text-center">
+            <div class="max-w-md w-full relative z-10 flex flex-col items-center justify-center h-full">
                 <div class="inline-block border border-amber-500/30 bg-amber-500/10 backdrop-blur-sm px-4 py-1 rounded-full text-xs font-bold text-amber-400 mb-8 tracking-widest">
-                    AI Adoption Partner
+                    For 株式会社Low Code
                 </div>
                 
                 <h2 class="text-5xl font-black mb-10 leading-tight tracking-tight">
@@ -98,105 +75,129 @@
                     「これなら私にもできる」という<br>小さなきっかけと、<br>隣で支えてくれるパートナーです。
                 </p>
 
-                <button onclick="toggleMenu()" class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-navy-900 transition-all duration-200 bg-amber-500 font-lg rounded-full hover:bg-amber-400 hover:shadow-lg hover:-translate-y-1 focus:outline-none ring-offset-2 focus:ring-2 ring-amber-500">
-                    Portfolio Menu
+                <button onclick="switchScreen('origin')" class="pulse-btn group relative inline-flex items-center justify-center px-8 py-4 font-bold text-navy-900 transition-all duration-200 bg-amber-500 rounded-full hover:bg-amber-400 hover:-translate-y-1">
+                    Start Story
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                     </svg>
                 </button>
             </div>
         </section>
 
-        <section id="origin" class="screen-section px-6 flex flex-col justify-center">
-            <div class="max-w-md mx-auto w-full">
-                <div class="mb-10">
-                    <span class="text-6xl font-black text-slate-200 block mb-[-20px] ml-[-10px]">01</span>
-                    <span class="relative text-amber-600 font-bold text-xs uppercase tracking-widest bg-slate-50 px-2">Origin Story</span>
+        <section id="origin" class="screen-section flex-col justify-center items-center bg-slate-50">
+            <div class="max-w-md w-full h-full flex flex-col relative">
+                <button onclick="switchScreen('hero')" class="absolute top-0 left-0 text-slate-400 hover:text-navy-900 p-2 flex items-center text-sm font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    TOP
+                </button>
+
+                <div class="mt-12 mb-6">
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-2">01. Origin Story</span>
+                    <h3 class="text-2xl font-bold text-navy-900 leading-relaxed">
+                        私はスマートな<br>エンジニアではありません。<br>
+                        泥臭い<span class="marker-highlight">「現場の当事者」</span>です。
+                    </h3>
                 </div>
 
-                <h3 class="text-2xl font-bold text-navy-900 mb-10 leading-relaxed">
-                    私はスマートな<br>エンジニアではありません。<br>
-                    泥臭い<span class="marker-highlight">「現場の当事者」</span>です。
-                </h3>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden mb-8">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-navy-900"></div>
-                    <p class="text-lg font-bold text-navy-900 mb-4">「一人は辛い」</p>
-                    <p class="text-slate-600 leading-relaxed text-sm">
-                        社長のnoteにあったこの言葉。その痛みを、私は今も肌で感じています。
-                        終わらないExcel作業、孤独な残業、DXという言葉だけが上滑りする虚無感。
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 mb-6 flex-1 overflow-y-auto">
+                    <p class="text-lg font-bold text-navy-900 mb-4 border-l-4 border-navy-900 pl-3">「一人は辛い」</p>
+                    <p class="text-slate-600 leading-7 text-sm">
+                        社長のnoteにあったこの言葉。<br>
+                        その痛みを、私は今も肌で感じています。<br><br>
+                        終わらないExcel作業、孤独な残業、DXという言葉だけが上滑りする虚無感。<br>
+                        「なんで自分だけが…」と押しつぶされそうな時、私を救ってくれたのがAIでした。<br><br>
+                        だからこそ、私は現場の隣に座り、<strong class="text-navy-900">「大丈夫、AIという相棒がいます」</strong>と背中を支える存在になりたいのです。
                     </p>
                 </div>
 
-                <p class="text-slate-600 leading-8">
-                    だからこそ、私は上流から論理を振りかざすのではなく、現場の隣に座り、<strong class="text-navy-900">「大丈夫、AIという相棒がいます」</strong>と背中を支える存在になりたいのです。
-                </p>
+                <div class="w-full mt-auto pt-4">
+                    <button onclick="switchScreen('works')" class="w-full bg-navy-900 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-navy-800 transition-transform active:scale-95 flex justify-center items-center">
+                        Next: Works & Vision
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </button>
+                </div>
             </div>
         </section>
 
-        <section id="works" class="screen-section px-6 flex flex-col items-center">
-            <div class="max-w-md mx-auto w-full">
-                <div class="mb-10 text-center">
-                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">02. Works & Vision</span>
+        <section id="works" class="screen-section flex-col justify-center items-center bg-white">
+            <div class="max-w-md w-full h-full flex flex-col relative">
+                <button onclick="switchScreen('origin')" class="absolute top-0 left-0 text-slate-400 hover:text-navy-900 p-2 flex items-center text-sm font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    Back
+                </button>
+
+                <div class="mt-12 mb-6 text-center">
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">02. Works</span>
                     <h3 class="text-2xl font-bold text-navy-900 mt-2">現場の痛みから生まれた<br>実装プロジェクト</h3>
                 </div>
 
-                <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-navy-900">
-                        <div class="flex justify-between items-center mb-3">
-                            <h4 class="font-bold text-lg text-navy-900">業務自動化ツール</h4>
-                            <span class="bg-navy-100 text-navy-800 text-[10px] px-2 py-1 rounded-full font-bold">実績</span>
+                <div class="space-y-4 flex-1 overflow-y-auto">
+                    <div class="bg-slate-50 p-5 rounded-2xl border-l-4 border-navy-900">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-navy-900">業務自動化ツール</h4>
+                            <span class="bg-navy-200 text-navy-900 text-[10px] px-2 py-1 rounded-full font-bold">実績</span>
                         </div>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                            「コピペ地獄から抜け出したい」一心で開発。コードを書かずにAIに指示を出し、<br>
-                            <span class="text-lg font-bold text-navy-900 bg-amber-100 px-1">「10時間の作業を1.5時間」</span><br>に短縮しました。
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            「コピペ地獄」からの脱却。<br>
+                            コードを書かずにAIに指示を出し、<br>
+                            <span class="text-base font-bold text-navy-900 bg-amber-100 px-1">「10時間の作業を1.5時間」</span><br>に短縮しました。
                         </p>
                     </div>
 
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-amber-500 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
-                        <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] px-3 py-1 rounded-bl-lg font-bold">企画構想</div>
-                        <h4 class="font-bold text-lg text-navy-900 mb-1">B-Care System</h4>
-                        <p class="text-xs text-amber-600 font-bold mb-3 tracking-wide">LABOR TECH</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            労働環境を守る「法務知見×AI」モニタリング。<br>
-                            従業員が声を上げにくい問題を未然に検知し、ケアする仕組み。<br>
-                            <span class="font-bold text-navy-900 text-xs">→ 「一人は辛い」をシステムで解決する。</span>
+                    <div class="bg-slate-50 p-5 rounded-2xl border-l-4 border-amber-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-navy-900">B-Care System</h4>
+                            <span class="bg-amber-100 text-amber-700 text-[10px] px-2 py-1 rounded-full font-bold">構想</span>
+                        </div>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            労働環境を守るAIモニタリング。<br>
+                            従業員が声を上げにくい問題を検知し、ケアする。<br>
+                            <span class="font-bold text-navy-900 text-xs">→ 「一人は辛い」をシステムで解決。</span>
                         </p>
                     </div>
 
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-amber-500 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
-                        <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] px-3 py-1 rounded-bl-lg font-bold">企画構想</div>
-                        <h4 class="font-bold text-lg text-navy-900 mb-1">S-LiVE Model</h4>
-                        <p class="text-xs text-amber-600 font-bold mb-3 tracking-wide">SOCIAL TECH</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            誠実な行動や信頼を評価する次世代スコアリング。<br>
-                            挑戦する人が正当に評価されるアルゴリズム。<br>
+                    <div class="bg-slate-50 p-5 rounded-2xl border-l-4 border-amber-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-navy-900">S-LiVE Model</h4>
+                            <span class="bg-amber-100 text-amber-700 text-[10px] px-2 py-1 rounded-full font-bold">構想</span>
+                        </div>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            誠実な行動や信頼を評価するスコアリング。<br>
                             <span class="font-bold text-navy-900 text-xs">→ 「正直者が報われる」社会の実装。</span>
                         </p>
                     </div>
                 </div>
+
+                <div class="w-full mt-auto pt-4">
+                    <button onclick="switchScreen('logic')" class="w-full bg-navy-900 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-navy-800 transition-transform active:scale-95 flex justify-center items-center">
+                        Next: My Logic
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </button>
+                </div>
             </div>
         </section>
 
-        <section id="logic" class="screen-section px-6 flex flex-col justify-center bg-navy-900 text-white relative overflow-hidden">
-            <div class="absolute inset-0 bg-hero-pattern opacity-10"></div>
-            <div class="max-w-md mx-auto w-full relative z-10">
-                <div class="mb-10">
-                    <span class="text-6xl font-black text-white/10 block mb-[-20px] ml-[-10px]">03</span>
-                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest px-2">My Algorithm</span>
+        <section id="logic" class="screen-section flex-col justify-center items-center bg-navy-900 text-white">
+            <div class="max-w-md w-full h-full flex flex-col relative">
+                <button onclick="switchScreen('works')" class="absolute top-0 left-0 text-slate-400 hover:text-white p-2 flex items-center text-sm font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    Back
+                </button>
+
+                <div class="mt-12 mb-6">
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest px-1">03. My Logic</span>
+                    <h3 class="text-2xl font-bold mb-4">再現性のある<br>「思考の型」</h3>
+                    <p class="text-slate-300 text-xs leading-relaxed mb-6">
+                        私の成果はマグレではありません。<br>
+                        以下の3ステップで、課題を解決策へ「実装」します。
+                    </p>
                 </div>
 
-                <h3 class="text-2xl font-bold mb-8">再現性のある<br>「思考の型」</h3>
-                <p class="text-slate-300 mb-10 text-sm leading-relaxed">
-                    私の成果はマグレではありません。<br>
-                    以下の3ステップの思考フレームワークにより、どんな課題でも解決策を「実装」します。
-                </p>
-
-                <div class="space-y-4">
+                <div class="space-y-4 flex-1 overflow-y-auto">
                     <div class="flex items-start gap-4">
                         <div class="flex flex-col items-center">
-                            <div class="w-10 h-10 rounded-full bg-navy-800 border border-amber-500 flex items-center justify-center font-bold text-amber-500">1</div>
-                            <div class="h-12 w-0.5 bg-navy-700"></div>
+                            <div class="w-8 h-8 rounded-full bg-navy-800 border border-amber-500 flex items-center justify-center font-bold text-amber-500 text-sm">1</div>
+                            <div class="h-8 w-px bg-navy-700 my-1"></div>
                         </div>
                         <div class="bg-navy-800 p-4 rounded-xl border border-navy-700 w-full">
                             <h4 class="font-bold text-white text-sm">GRIP (掌握)</h4>
@@ -205,8 +206,8 @@
                     </div>
                     <div class="flex items-start gap-4">
                         <div class="flex flex-col items-center">
-                            <div class="w-10 h-10 rounded-full bg-navy-800 border border-amber-500 flex items-center justify-center font-bold text-amber-500">2</div>
-                            <div class="h-12 w-0.5 bg-navy-700"></div>
+                            <div class="w-8 h-8 rounded-full bg-navy-800 border border-amber-500 flex items-center justify-center font-bold text-amber-500 text-sm">2</div>
+                            <div class="h-8 w-px bg-navy-700 my-1"></div>
                         </div>
                         <div class="bg-navy-800 p-4 rounded-xl border border-navy-700 w-full">
                             <h4 class="font-bold text-white text-sm">DECONSTRUCT (分解)</h4>
@@ -215,7 +216,7 @@
                     </div>
                     <div class="flex items-start gap-4">
                         <div class="flex flex-col items-center">
-                            <div class="w-10 h-10 rounded-full bg-amber-500 text-navy-900 flex items-center justify-center font-bold">3</div>
+                            <div class="w-8 h-8 rounded-full bg-amber-500 text-navy-900 flex items-center justify-center font-bold text-sm">3</div>
                         </div>
                         <div class="bg-navy-800 p-4 rounded-xl border-2 border-amber-500 w-full shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                             <h4 class="font-bold text-white text-sm">PROMPT (指揮)</h4>
@@ -223,63 +224,89 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section id="value" class="screen-section px-6 flex flex-col justify-center bg-white">
-            <div class="max-w-md mx-auto w-full">
-                <div class="mb-10">
-                    <span class="text-6xl font-black text-slate-100 block mb-[-20px] ml-[-10px]">04</span>
-                    <span class="relative text-amber-600 font-bold text-xs uppercase tracking-widest bg-white px-2">Why Me</span>
-                </div>
-
-                <h3 class="text-2xl font-bold text-navy-900 mb-8">御社で発揮できる<br>「翻訳力」</h3>
-                
-                <p class="text-slate-600 mb-10 leading-8 font-medium">
-                    私の役割は、Microsoftの高度なテクノロジーを、現場が使える<span class="marker-highlight">「日常の道具」</span>に翻訳することです。
-                </p>
-
-                <div class="grid gap-4">
-                    <div class="bg-slate-50 p-6 rounded-2xl">
-                        <div class="w-10 h-10 bg-navy-900 rounded-full flex items-center justify-center text-white mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                        </div>
-                        <h4 class="font-bold text-navy-900 mb-2">Empathy (共感)</h4>
-                        <p class="text-sm text-slate-600">「AIなんて怖い」という食わず嫌いを、同じ目線で解きほぐします。</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl">
-                        <div class="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                        </div>
-                        <h4 class="font-bold text-navy-900 mb-2">Empowerment (伴走)</h4>
-                        <p class="text-sm text-slate-600">「これなら自分でやれる」と自走できるまで伴走します。</p>
-                    </div>
+                <div class="w-full mt-auto pt-4">
+                    <button onclick="switchScreen('value')" class="w-full bg-amber-500 text-navy-900 font-bold py-4 rounded-xl shadow-lg hover:bg-amber-400 transition-transform active:scale-95 flex justify-center items-center">
+                        Next: Why Me
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <section id="promise" class="screen-section px-6 flex flex-col justify-center bg-navy-900 text-white relative overflow-hidden">
+        <section id="value" class="screen-section flex-col justify-center items-center bg-slate-50">
+            <div class="max-w-md w-full h-full flex flex-col relative">
+                <button onclick="switchScreen('logic')" class="absolute top-0 left-0 text-slate-400 hover:text-navy-900 p-2 flex items-center text-sm font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    Back
+                </button>
+
+                <div class="mt-12 mb-6">
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-2">04. Why Me</span>
+                    <h3 class="text-2xl font-bold text-navy-900">御社で発揮できる<br>「翻訳力」</h3>
+                </div>
+
+                <div class="flex-1 overflow-y-auto">
+                    <p class="text-slate-600 mb-8 leading-8 font-medium">
+                        私の役割は、Microsoftの高度なテクノロジーを、現場が使える<span class="marker-highlight">「日常の道具」</span>に翻訳することです。
+                    </p>
+
+                    <div class="grid gap-4">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm">
+                            <div class="w-10 h-10 bg-navy-900 rounded-full flex items-center justify-center text-white mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                            </div>
+                            <h4 class="font-bold text-navy-900 mb-2">Empathy (共感)</h4>
+                            <p class="text-sm text-slate-600">「AIなんて怖い」という食わず嫌いを、同じ目線で解きほぐします。</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm">
+                            <div class="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            </div>
+                            <h4 class="font-bold text-navy-900 mb-2">Empowerment (伴走)</h4>
+                            <p class="text-sm text-slate-600">「これなら自分でやれる」と自走できるまで伴走します。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full mt-auto pt-4">
+                    <button onclick="switchScreen('promise')" class="w-full bg-navy-900 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-navy-800 transition-transform active:scale-95 flex justify-center items-center">
+                        Next: My Promise
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="promise" class="screen-section flex-col justify-center items-center bg-navy-900 text-white relative overflow-hidden">
             <div class="absolute inset-0 bg-hero-pattern opacity-10"></div>
             
-            <div class="max-w-md mx-auto w-full relative z-10">
-                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-6">05. My Promise</span>
-                <h3 class="text-3xl font-black mb-8">未知を楽しむ力</h3>
+            <div class="max-w-md w-full h-full flex flex-col relative z-10">
+                <button onclick="switchScreen('value')" class="absolute top-0 left-0 text-slate-400 hover:text-white p-2 flex items-center text-sm font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    Back
+                </button>
+
+                <div class="mt-12 mb-6">
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">05. My Promise</span>
+                    <h3 class="text-3xl font-black mb-6">未知を楽しむ力</h3>
+                </div>
                 
-                <div class="bg-navy-800/50 p-6 rounded-2xl border border-white/10 mb-10 backdrop-blur-sm">
-                    <p class="leading-relaxed text-slate-300">
+                <div class="bg-navy-800/50 p-6 rounded-2xl border border-white/10 mb-8 backdrop-blur-sm flex-1 overflow-y-auto">
+                    <p class="leading-relaxed text-slate-300 text-sm">
                         現在はGoogle環境がメインですが、御社のMicrosoft環境への移行に不安はありません。<br><br>
                         <strong class="text-white border-b border-amber-500">新しい道具もAIと共に3日あればマスターしてみせます。</strong><br><br>
                         受け身で教わるのではなく、自ら活用して最速で戦力になります。
                     </p>
                 </div>
 
-                <div class="border-t border-white/10 pt-8 text-center">
-                    <h4 class="text-lg font-bold mb-6">Anyone Can Do This.</h4>
+                <div class="border-t border-white/10 pt-6 text-center mt-auto">
+                    <h4 class="text-lg font-bold mb-4">Anyone Can Do This.</h4>
                     <button id="reveal-btn" onclick="revealContent()" class="w-full bg-amber-500 text-navy-900 font-bold py-4 rounded-full shadow-lg hover:bg-amber-400 transition-transform active:scale-95">
                         ネタばらしを見る
                     </button>
                     
-                    <div id="hidden-content" class="hidden mt-6 bg-white text-slate-800 p-6 rounded-2xl text-left shadow-2xl animate-fadeUp">
+                    <div id="hidden-content" class="hidden mt-4 bg-white text-slate-800 p-6 rounded-2xl text-left shadow-2xl animate-fadeIn">
                         <p class="font-bold text-navy-900 text-lg mb-2">💡 種明かし</p>
                         <p class="text-sm leading-relaxed font-medium text-slate-600">
                             このサイトも、コードは一切書いていません。AIに「やりたいこと」と「情熱」を伝えただけです。<br><br>
@@ -294,32 +321,20 @@
     </main>
 
     <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar.classList.contains('translate-x-full')) {
-                sidebar.classList.remove('translate-x-full');
-            } else {
-                sidebar.classList.add('translate-x-full');
-            }
-        }
-
         function switchScreen(id) {
-            // スクロールをトップに戻す
-            window.scrollTo(0, 0);
-            
-            // 全てのセクションを隠す
+            // 現在のスクリーンからactiveを外す
             document.querySelectorAll('.screen-section').forEach(el => {
                 el.classList.remove('active-screen');
             });
 
-            // 指定されたセクションを表示
+            // 指定されたスクリーンを表示
             const target = document.getElementById(id);
             if (target) {
                 target.classList.add('active-screen');
             }
             
-            // メニューを閉じる
-            toggleMenu();
+            // スクロール位置をリセット
+            window.scrollTo(0, 0);
         }
 
         function revealContent() {
