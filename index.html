@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Adoption Partner | Confidence Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#0f172a', // Base: Trust
+                            800: '#1e293b',
+                        },
+                        amber: {
+                            500: '#f59e0b', // Accent: Warmth & Empathy
+                            600: '#d97706',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-feature-settings: "palt"; }
+        .fade-init { opacity: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased leading-relaxed">
+
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <h1 class="text-sm font-bold text-navy-900 tracking-wider">PORTFOLIO</h1>
+            <nav class="hidden md:flex space-x-8 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                <a href="#origin" class="hover:text-amber-500 transition">Origin</a>
+                <a href="#case" class="hover:text-amber-500 transition">Case Study</a>
+                <a href="#value" class="hover:text-amber-500 transition">Why Me</a>
+                <a href="#promise" class="hover:text-amber-500 transition">Promise</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="min-h-[90vh] flex items-center justify-center pt-16 relative overflow-hidden bg-navy-900 text-white">
+        <div class="absolute top-0 right-0 w-2/3 h-full bg-navy-800 rounded-bl-full opacity-50 -z-10 translate-x-1/4"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 text-center animate-fade-in-up">
+            <p class="text-amber-500 font-bold tracking-[0.2em] text-xs uppercase mb-6">AI Adoption Partner / For 株式会社Low Code</p>
+            <h2 class="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                システムを売るな。<br>
+                <span class="text-amber-500 border-b-4 border-amber-500/30 pb-2">「自信」</span>を創れ。
+            </h2>
+            <div class="w-16 h-1 bg-amber-500 mx-auto mb-8"></div>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-8 font-light">
+                現場が必要としているのは、高機能なツールではありません。<br>
+                「これなら私にもできる」という小さなきっかけと、<br class="hidden md:block">
+                隣で支えてくれるパートナーです。
+            </p>
+        </div>
+    </section>
+
+    <section id="origin" class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">Origin Story</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-navy-900 mt-2">私は「エンジニア」ではありません。<br>「現・現場の当事者」です。</h3>
+            </div>
+            
+            <div class="prose prose-lg text-slate-600 leading-8">
+                <p>
+                    代表のnoteにあった<span class="font-bold text-navy-900 bg-amber-100 px-1">「一人は辛い」</span>という言葉。その痛みを、私は誰よりも知っています。
+                </p>
+                <p>
+                    なぜなら私は今も、DXという言葉さえ知らないまま、膨大な事務作業と孤独に戦っている一人の実務担当者だからです。<br>
+                    壁にぶつかり、誰にも相談できず、残業だけが増えていく焦り。その気持ちが痛いほど分かります。
+                </p>
+                <p>
+                    だからこそ、私は上流から論理を振りかざすのではなく、現場の目線で「AIという相棒」を紹介することができます。<br>
+                    「便利ですよ」ではなく、「楽になりますよ、私がそうだったから」と。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="case" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-6">
+            <h3 class="text-3xl font-bold text-navy-900 mb-12 text-center">Case Study<br><span class="text-base font-normal text-slate-500">AIを知らなかった私が変われた理由</span></h3
