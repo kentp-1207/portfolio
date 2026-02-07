@@ -24,13 +24,14 @@
     <style>
         body { font-feature-settings: "palt"; }
         /* 切り替え用の基本スタイル */
-        .screen-section { display: none; width: 100%; height: 100%; }
-        .active-screen { display: flex; }
+        .screen-section { display: none; }
+        .active-screen { display: block; animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased h-screen flex flex-col overflow-hidden">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <header class="bg-navy-900 text-white h-16 flex items-center px-4 justify-between shrink-0 z-50 shadow-md">
+    <header class="bg-navy-900 text-white h-16 flex items-center px-4 justify-between fixed w-full top-0 z-50 shadow-md">
         <div class="flex items-center gap-3">
             <button onclick="toggleMenu()" class="p-2 -ml-2 rounded hover:bg-navy-800 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,49 +40,63 @@
             </button>
             <h1 class="font-bold text-sm tracking-wider">PORTFOLIO</h1>
         </div>
-        <div class="text-xs text-amber-500 font-bold">For Low Code Inc.</div>
-    </header>
+        </header>
 
-    <div id="sidebar-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
-    <nav id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-navy-900 text-white z-50 transform -translate-x-full transition-transform duration-200 shadow-2xl flex flex-col">
+    <nav id="sidebar" class="fixed inset-0 bg-navy-900 text-white z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col">
         <div class="p-5 border-b border-navy-800 flex justify-between items-center">
-            <span class="font-bold tracking-widest">MENU</span>
-            <button onclick="toggleMenu()" class="text-slate-400 p-2">✕</button>
+            <span class="font-bold tracking-widest text-lg">MENU</span>
+            <button onclick="toggleMenu()" class="text-slate-400 p-2 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
-        <div class="flex-1 py-4 overflow-y-auto">
-            <button onclick="switchScreen('hero')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold transition-colors">00 TOP</button>
-            <button onclick="switchScreen('origin')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold transition-colors">01 Origin Story</button>
-            <button onclick="switchScreen('case')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold transition-colors">02 Case Study</button>
-            <button onclick="switchScreen('value')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold transition-colors">03 Why Me</button>
-            <button onclick="switchScreen('promise')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold transition-colors">04 My Promise</button>
+        <div class="flex-1 py-8 px-4 overflow-y-auto space-y-4">
+            <button onclick="switchScreen('hero')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">00 TOP</button>
+            <button onclick="switchScreen('origin')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">01 Origin Story</button>
+            <button onclick="switchScreen('case')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">02 Case Study</button>
+            <button onclick="switchScreen('value')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">03 Why Me</button>
+            <button onclick="switchScreen('promise')" class="w-full text-left px-6 py-4 bg-navy-800 rounded-lg hover:bg-amber-600 font-bold transition-all text-lg">04 My Promise</button>
         </div>
-        <div class="p-4 text-xs text-slate-500 border-t border-navy-800 text-center">
+        <div class="p-6 text-sm text-slate-500 border-t border-navy-800 text-center">
             &copy; 2024 AI Adoption Partner
         </div>
     </nav>
 
-    <main id="main-container" class="flex-1 overflow-y-auto relative w-full bg-white">
+    <main class="pt-20 pb-12 px-6 min-h-screen">
         
-        <section id="hero" class="screen-section active-screen flex-col items-center justify-center p-8 text-center min-h-full">
-            <div class="max-w-md mx-auto">
+        <section id="hero" class="screen-section active-screen">
+            <div class="max-w-md mx-auto text-center pt-8">
+                
+                <div class="inline-block bg-navy-900 text-white px-5 py-2 rounded-full text-sm font-bold tracking-widest mb-8 shadow-lg">
+                    For 株式会社Low Code
+                </div>
+
                 <p class="text-amber-500 font-bold text-xs uppercase mb-6 tracking-widest">AI Adoption Partner</p>
-                <h2 class="text-3xl md:text-5xl font-bold text-navy-900 mb-8 leading-snug">
+                <h2 class="text-4xl font-bold text-navy-900 mb-8 leading-snug">
                     システムを売るな。<br>
-                    <span class="border-b-4 border-amber-500 pb-1">「自信」</span>を創れ。
+                    <span class="border-b-4 border-amber-500 pb-1 inline-block">「自信」</span>を創れ。
                 </h2>
-                <div class="w-12 h-1 bg-amber-500 mx-auto mb-8"></div>
-                <p class="text-slate-600 leading-8 mb-8">
-                    現場が必要としているのは、高機能なツールではありません。<br>
+                <div class="w-16 h-1 bg-amber-500 mx-auto mb-10"></div>
+                <p class="text-slate-600 leading-9 text-lg mb-10">
+                    現場が必要としているのは、高機能なツールではありません。<br><br>
                     「これなら私にもできる」という小さなきっかけと、隣で支えてくれるパートナーです。
                 </p>
-                <button onclick="toggleMenu()" class="text-sm text-slate-400 underline py-2 mt-4">左上のメニューを開く</button>
+                <div class="bg-white p-4 rounded shadow-sm border border-slate-200 inline-block">
+                    <button onclick="toggleMenu()" class="text-sm text-navy-900 font-bold flex items-center justify-center gap-2">
+                        <span>メニューを開く</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </section>
 
-        <section id="origin" class="screen-section flex-col items-center justify-center p-8 min-h-full">
-            <div class="max-w-md mx-auto">
+        <section id="origin" class="screen-section">
+            <div class="max-w-md mx-auto pt-4">
                 <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">01. Origin Story</span>
-                <h3 class="text-2xl font-bold text-navy-900 mb-8">私は「エンジニア」ではありません。<br>「現・現場の当事者」です。</h3>
+                <h3 class="text-2xl font-bold text-navy-900 mb-8 leading-tight">私は「エンジニア」ではありません。<br>「現・現場の当事者」です。</h3>
                 <div class="prose text-slate-600 leading-8 space-y-6">
                     <p>代表のnoteにあった<span class="font-bold bg-amber-100 px-1 text-navy-900">「一人は辛い」</span>という言葉。その痛みを、私は誰よりも知っています。</p>
                     <p>なぜなら私は今も、DXという言葉さえ知らないまま、膨大な事務作業と孤独に戦っている一人の実務担当者だからです。</p>
@@ -90,70 +105,72 @@
             </div>
         </section>
 
-        <section id="case" class="screen-section flex-col items-center justify-center p-6 bg-slate-50 min-h-full">
-            <div class="max-w-md mx-auto w-full">
+        <section id="case" class="screen-section">
+            <div class="max-w-md mx-auto w-full pt-4">
                 <div class="text-center mb-10">
                     <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">02. Case Study</span>
                     <h3 class="text-2xl font-bold text-navy-900 mt-2">AIを知らなかった私が<br>変われた理由</h3>
                 </div>
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-slate-300">
-                        <h4 class="font-bold text-navy-900 mb-2">01. The Wall (課題)</h4>
-                        <p class="text-sm text-slate-600">業務に忙殺され、効率化の手段すら知らなかった過去。「これが仕事だ」と思い込み、手作業を繰り返す日々でした。</p>
+                        <h4 class="font-bold text-navy-900 mb-2 text-lg">01. The Wall (課題)</h4>
+                        <p class="text-slate-600 leading-relaxed">業務に忙殺され、効率化の手段すら知らなかった過去。「これが仕事だ」と思い込み、手作業を繰り返す日々でした。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-amber-500 transform md:-translate-y-2">
-                        <h4 class="font-bold text-navy-900 mb-2">02. The Shift (転換)</h4>
-                        <p class="text-sm text-slate-600">現状を打破するためにAIに触れ、コードを書かずに自動化ツールを作成。自分専用の「部下」ができた瞬間でした。</p>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-amber-500 transform">
+                        <h4 class="font-bold text-navy-900 mb-2 text-lg">02. The Shift (転換)</h4>
+                        <p class="text-slate-600 leading-relaxed">現状を打破するためにAIに触れ、コードを書かずに自動化ツールを作成。自分専用の「部下」ができた瞬間でした。</p>
                     </div>
                     <div class="bg-navy-900 p-6 rounded-xl shadow-sm text-white">
-                        <h4 class="font-bold text-white mb-2">03. The Insight (気づき)</h4>
-                        <p class="text-sm text-slate-300">必要なのは技術力ではなく<strong class="text-amber-500">「AIへの頼み方」</strong>だけ。この事実こそが、クライアントへの希望です。</p>
+                        <h4 class="font-bold text-white mb-2 text-lg">03. The Insight (気づき)</h4>
+                        <p class="text-slate-300 leading-relaxed">必要なのは技術力ではなく<strong class="text-amber-500">「AIへの頼み方」</strong>だけ。この事実こそが、クライアントへの希望です。</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="value" class="screen-section flex-col items-center justify-center p-8 min-h-full">
-            <div class="max-w-md mx-auto">
-                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">03. Why Me</span>
-                <h3 class="text-2xl font-bold text-navy-900 mt-2 mb-8">御社で発揮できる<br>「翻訳力」</h3>
+        <section id="value" class="screen-section">
+            <div class="max-w-md mx-auto pt-4">
+                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">03. Why Me</span>
+                <h3 class="text-2xl font-bold text-navy-900 mb-8">御社で発揮できる<br>「翻訳力」</h3>
                 <p class="text-slate-600 mb-8 leading-8">
                     御社は「伴走する」会社だと伺いました。<br>私の役割は、Microsoftの高度なテクノロジーを、現場が使える「日常の道具」に翻訳することです。
                 </p>
-                <div class="space-y-4">
-                    <div class="p-6 bg-slate-50 border-l-4 border-navy-900 rounded shadow-sm">
+                <div class="space-y-6">
+                    <div class="p-6 bg-white border-l-4 border-navy-900 rounded shadow-sm">
                         <h4 class="font-bold text-navy-900 text-lg">Empathy (共感)</h4>
-                        <p class="text-sm text-slate-600 mt-2">「AIなんて怖い」「仕事が奪われる」という現場の食わず嫌いを、同じ目線で解きほぐします。</p>
+                        <p class="text-slate-600 mt-2 leading-7">「AIなんて怖い」「仕事が奪われる」という現場の食わず嫌いを、同じ目線で解きほぐします。</p>
                     </div>
-                    <div class="p-6 bg-slate-50 border-l-4 border-amber-500 rounded shadow-sm">
+                    <div class="p-6 bg-white border-l-4 border-amber-500 rounded shadow-sm">
                         <h4 class="font-bold text-navy-900 text-lg">Empowerment (伴走)</h4>
-                        <p class="text-sm text-slate-600 mt-2">ツールを渡して終わりではなく、「これなら自分でやれる」と自走できるまで伴走します。</p>
+                        <p class="text-slate-600 mt-2 leading-7">ツールを渡して終わりではなく、「これなら自分でやれる」と自走できるまで伴走します。</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="promise" class="screen-section flex-col items-center justify-center p-8 bg-navy-900 text-white text-center min-h-full">
-            <div class="max-w-md mx-auto">
-                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">04. My Promise</span>
-                <h3 class="text-3xl font-bold mb-8">未知を楽しむ力</h3>
-                <p class="leading-8 text-slate-300 mb-8">
-                    現在はGoogle環境がメインですが、御社のMicrosoft環境への移行に不安はありません。
-                    新しい道具もAIと共に3日あればマスターしてみせます。
-                </p>
-                
-                <div class="mt-8 pt-8 border-t border-navy-800">
-                    <h4 class="text-lg font-bold mb-6">Anyone Can Do This.</h4>
-                    <button id="reveal-btn" onclick="revealContent()" class="bg-amber-500 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-amber-600 transition transform hover:-translate-y-1">
-                        ネタばらしを見る
-                    </button>
-                    <div id="hidden-content" class="hidden mt-6 bg-white text-slate-800 p-6 rounded-lg text-left">
-                        <p class="font-bold text-navy-900 mb-2">種明かし：AIというパートナー</p>
-                        <p class="text-sm leading-relaxed">
-                            このサイトも、コードは一切書いていません。AIに「やりたいこと」を伝えただけです。<br><br>
-                            私が御社に入社したら、クライアント様にこう伝えます。<br>
-                            <strong class="text-amber-600 border-b border-amber-500">『プログラミングは覚えなくていい。AIへの頼み方だけ覚えれば、あなたも同じことができます』</strong>と。
-                        </p>
+        <section id="promise" class="screen-section">
+            <div class="max-w-md mx-auto pt-4 text-center">
+                <div class="bg-navy-900 text-white p-8 rounded-2xl shadow-xl">
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">04. My Promise</span>
+                    <h3 class="text-2xl font-bold mb-8">未知を楽しむ力</h3>
+                    <p class="leading-8 text-slate-300 mb-8 text-left">
+                        現在はGoogle環境がメインですが、御社のMicrosoft環境への移行に不安はありません。
+                        新しい道具もAIと共に3日あればマスターしてみせます。
+                    </p>
+                    
+                    <div class="mt-8 pt-8 border-t border-navy-800">
+                        <h4 class="text-lg font-bold mb-6">Anyone Can Do This.</h4>
+                        <button id="reveal-btn" onclick="revealContent()" class="bg-amber-500 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-amber-600 transition w-full">
+                            ネタばらしを見る
+                        </button>
+                        <div id="hidden-content" class="hidden mt-6 bg-white text-slate-800 p-6 rounded-lg text-left">
+                            <p class="font-bold text-navy-900 mb-2">種明かし：AIというパートナー</p>
+                            <p class="text-sm leading-relaxed">
+                                このサイトも、コードは一切書いていません。AIに「やりたいこと」を伝えただけです。<br><br>
+                                私が御社に入社したら、クライアント様にこう伝えます。<br>
+                                <strong class="text-amber-600 border-b border-amber-500">『プログラミングは覚えなくていい。AIへの頼み方だけ覚えれば、あなたも同じことができます』</strong>と。
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -165,18 +182,15 @@
         // メニューの開閉
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
             
             if (sidebar.classList.contains('-translate-x-full')) {
                 sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
             } else {
                 sidebar.classList.add('-translate-x-full');
-                overlay.classList.add('hidden');
             }
         }
 
-        // 画面切り替え（アニメーションなし・即時切り替え）
+        // 画面切り替え
         function switchScreen(id) {
             // 全てのセクションから active-screen を消す
             document.querySelectorAll('.screen-section').forEach(el => {
@@ -187,8 +201,8 @@
             const target = document.getElementById(id);
             if (target) {
                 target.classList.add('active-screen');
-                // スクロール位置を一番上に戻す
-                document.getElementById('main-container').scrollTop = 0;
+                // ページの一番上にスクロール
+                window.scrollTo(0, 0);
             }
             
             toggleMenu(); // メニューを閉じる
