@@ -64,11 +64,12 @@
             </button>
         </div>
         <div class="flex-1 overflow-y-auto p-6 space-y-4 flex flex-col justify-center">
-            <button onclick="switchScreen('hero')" class="text-3xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">00 TOP</button>
-            <button onclick="switchScreen('origin')" class="text-3xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">01 Origin</button>
-            <button onclick="switchScreen('works')" class="text-3xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">02 Works</button>
-            <button onclick="switchScreen('value')" class="text-3xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">03 Why Me</button>
-            <button onclick="switchScreen('promise')" class="text-3xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">04 Promise</button>
+            <button onclick="switchScreen('hero')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">00 TOP</button>
+            <button onclick="switchScreen('origin')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">01 Origin</button>
+            <button onclick="switchScreen('works')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">02 Works</button>
+            <button onclick="switchScreen('logic')" class="text-2xl font-black text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">03 My Logic</button>
+            <button onclick="switchScreen('value')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">04 Why Me</button>
+            <button onclick="switchScreen('promise')" class="text-2xl font-black hover:text-amber-500 transition-colors text-left w-full py-2 border-b border-navy-800">05 Promise</button>
         </div>
         <div class="p-6 text-center text-slate-500 text-xs">
             For 株式会社Low Code
@@ -147,8 +148,8 @@
                             <span class="bg-navy-100 text-navy-800 text-[10px] px-2 py-1 rounded-full font-bold">実績</span>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                            「コピペ地獄から抜け出したい」一心で開発。コードを書かずにAIに指示を出し、月間20時間削減。<br>
-                            <span class="text-amber-600 font-bold text-xs">→ 技術より「頼み方」が重要だと証明。</span>
+                            「コピペ地獄から抜け出したい」一心で開発。コードを書かずにAIに指示を出し、<br>
+                            <span class="text-lg font-bold text-navy-900 bg-amber-100 px-1">「10時間の作業を1.5時間」</span><br>に短縮しました。
                         </p>
                     </div>
 
@@ -177,10 +178,58 @@
             </div>
         </section>
 
+        <section id="logic" class="screen-section px-6 flex flex-col justify-center bg-navy-900 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-hero-pattern opacity-10"></div>
+            <div class="max-w-md mx-auto w-full relative z-10">
+                <div class="mb-10">
+                    <span class="text-6xl font-black text-white/10 block mb-[-20px] ml-[-10px]">03</span>
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest px-2">My Algorithm</span>
+                </div>
+
+                <h3 class="text-2xl font-bold mb-8">再現性のある<br>「思考の型」</h3>
+                <p class="text-slate-300 mb-10 text-sm leading-relaxed">
+                    私の成果はマグレではありません。<br>
+                    以下の3ステップの思考フレームワークにより、どんな課題でも解決策を「実装」します。
+                </p>
+
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-navy-800 border border-amber-500 flex items-center justify-center font-bold text-amber-500">1</div>
+                            <div class="h-12 w-0.5 bg-navy-700"></div>
+                        </div>
+                        <div class="bg-navy-800 p-4 rounded-xl border border-navy-700 w-full">
+                            <h4 class="font-bold text-white text-sm">GRIP (掌握)</h4>
+                            <p class="text-xs text-slate-400 mt-1">「何が辛いのか？」現場の怒りや違和感を言語化し、真の課題を特定する。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-navy-800 border border-amber-500 flex items-center justify-center font-bold text-amber-500">2</div>
+                            <div class="h-12 w-0.5 bg-navy-700"></div>
+                        </div>
+                        <div class="bg-navy-800 p-4 rounded-xl border border-navy-700 w-full">
+                            <h4 class="font-bold text-white text-sm">DECONSTRUCT (分解)</h4>
+                            <p class="text-xs text-slate-400 mt-1">業務をロジックで最小単位に因数分解し、AIが処理可能なタスクに落とし込む。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="flex flex-col items-center">
+                            <div class="w-10 h-10 rounded-full bg-amber-500 text-navy-900 flex items-center justify-center font-bold">3</div>
+                        </div>
+                        <div class="bg-navy-800 p-4 rounded-xl border-2 border-amber-500 w-full shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                            <h4 class="font-bold text-white text-sm">PROMPT (指揮)</h4>
+                            <p class="text-xs text-slate-400 mt-1">AIに明確な役割を与えて実装し、現場が使えるようになるまで伴走する。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="value" class="screen-section px-6 flex flex-col justify-center bg-white">
             <div class="max-w-md mx-auto w-full">
                 <div class="mb-10">
-                    <span class="text-6xl font-black text-slate-100 block mb-[-20px] ml-[-10px]">03</span>
+                    <span class="text-6xl font-black text-slate-100 block mb-[-20px] ml-[-10px]">04</span>
                     <span class="relative text-amber-600 font-bold text-xs uppercase tracking-widest bg-white px-2">Why Me</span>
                 </div>
 
@@ -213,7 +262,7 @@
             <div class="absolute inset-0 bg-hero-pattern opacity-10"></div>
             
             <div class="max-w-md mx-auto w-full relative z-10">
-                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-6">04. My Promise</span>
+                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-6">05. My Promise</span>
                 <h3 class="text-3xl font-black mb-8">未知を楽しむ力</h3>
                 
                 <div class="bg-navy-800/50 p-6 rounded-2xl border border-white/10 mb-10 backdrop-blur-sm">
