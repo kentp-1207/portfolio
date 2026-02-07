@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | For Low Code Inc.</title>
+    <title>Strategic Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -15,67 +15,121 @@
                     fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'] },
                     colors: {
                         navy: { 900: '#0f172a', 800: '#1e293b' },
-                        amber: { 500: '#f59e0b' }
+                        amber: { 500: '#f59e0b', 600: '#d97706' }
                     }
                 }
             }
         }
     </script>
-    <style>
-        body { font-feature-settings: "palt"; }
-    </style>
+    <style>body { font-feature-settings: "palt"; }</style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased h-screen flex flex-col overflow-hidden">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <header class="bg-navy-900 text-white h-16 flex items-center px-4 justify-between shrink-0 z-50 shadow-md">
-        <div class="flex items-center gap-3">
-            <button onclick="toggleMenu()" class="p-2 -ml-2 rounded hover:bg-navy-800">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-            <h1 class="font-bold text-sm tracking-wider">PORTFOLIO</h1>
+    <header class="bg-navy-900 text-white py-4 px-6 fixed w-full top-0 z-50 shadow-md">
+        <div class="max-w-xl mx-auto flex justify-between items-center">
+            <h1 class="font-bold tracking-widest text-sm">PORTFOLIO</h1>
+            <span class="text-xs text-amber-500 font-bold">For Low Code Inc.</span>
         </div>
-        <div class="text-xs text-amber-500 font-bold">For Low Code Inc.</div>
     </header>
 
-    <div id="sidebar-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
-    <nav id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-navy-900 text-white z-50 transform -translate-x-full transition-transform duration-200 shadow-2xl flex flex-col">
-        <div class="p-5 border-b border-navy-800 flex justify-between items-center">
-            <span class="font-bold tracking-widest">MENU</span>
-            <button onclick="toggleMenu()" class="text-slate-400">✕</button>
-        </div>
-        <div class="flex-1 py-4">
-            <button onclick="switchScreen('hero')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold">00 TOP</button>
-            <button onclick="switchScreen('origin')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold">01 Origin Story</button>
-            <button onclick="switchScreen('case')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold">02 Case Study</button>
-            <button onclick="switchScreen('value')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold">03 Why Me</button>
-            <button onclick="switchScreen('promise')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 font-bold">04 My Promise</button>
-        </div>
-    </nav>
+    <main class="pt-16 pb-20 px-6 max-w-xl mx-auto space-y-20">
 
-    <main id="main-container" class="flex-1 overflow-y-auto relative w-full bg-white">
-        
-        <section id="hero" class="screen-section min-h-full flex flex-col items-center justify-center p-8 text-center">
-            <p class="text-amber-500 font-bold text-xs uppercase mb-6 tracking-widest">AI Adoption Partner</p>
-            <h2 class="text-3xl md:text-5xl font-bold text-navy-900 mb-8 leading-snug">
+        <section class="text-center pt-10">
+            <p class="text-amber-600 font-bold text-xs uppercase mb-4 tracking-widest">AI Adoption Partner</p>
+            <h2 class="text-3xl font-bold text-navy-900 mb-6 leading-tight">
                 システムを売るな。<br>
-                <span class="border-b-4 border-amber-500 pb-1">「自信」</span>を創れ。
+                <span class="border-b-4 border-amber-500">「自信」</span>を創れ。
             </h2>
-            <div class="w-12 h-1 bg-amber-500 mx-auto mb-8"></div>
-            <p class="text-slate-600 leading-8 mb-8">
+            <p class="text-slate-600 leading-8 text-sm">
                 現場が必要としているのは、高機能なツールではありません。<br>
-                「これなら私にもできる」という小さなきっかけと、隣で支えてくれるパートナーです。
+                「これなら私にもできる」というきっかけと、隣で支えてくれるパートナーです。
             </p>
-            <button onclick="toggleMenu()" class="text-sm text-slate-400 underline py-2">メニューを開く</button>
         </section>
 
-        <section id="origin" class="screen-section hidden min-h-full flex-col items-center justify-center p-8">
-            <div class="max-w-2xl">
-                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">01. Origin Story</span>
-                <h3 class="text-2xl font-bold text-navy-900 mb-8">私は「エンジニア」ではありません。<br>「現・現場の当事者」です。</h3>
-                <div class="prose text-slate-600 leading-8 space-y-6">
-                    <p>代表のnoteにあった<span class="font-bold bg-amber-100 px-1">「一人は辛い」</span>という言葉。その痛みを、私は誰よりも知っています。</p>
-                    <p>なぜなら私は今も、DXという言葉さえ知らないまま、膨大な事務作業と孤独に戦っている一人の実務担当者だからです。</p>
-                    <p>だからこそ、上流から論理を振りかざすのではなく、現場の目線で「AIという相棒」を紹介できます。「便利ですよ」ではなく、「楽になりますよ」と。</p>
-          
+        <section>
+            <div class="border-l-4 border-amber-500 pl-4 mb-4">
+                <span class="text-amber-600 font-bold text-xs uppercase block">01. Origin Story</span>
+                <h3 class="text-xl font-bold text-navy-900">私は「エンジニア」ではない。<br>「現・現場の当事者」です。</h3>
+            </div>
+            <div class="prose text-slate-600 leading-7 text-sm space-y-4">
+                <p>代表のnoteにあった<span class="font-bold bg-amber-100 px-1">「一人は辛い」</span>という言葉。その痛みを、私は誰よりも知っています。</p>
+                <p>なぜなら私は今も、膨大な事務作業と孤独に戦っている一人の実務担当者だからです。</p>
+                <p>だからこそ、上流から論理を振りかざすのではなく、現場の目線で「AIという相棒」を紹介できます。</p>
+            </div>
+        </section>
+
+        <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <div class="text-center mb-6">
+                <span class="text-amber-600 font-bold text-xs uppercase">02. Case Study</span>
+                <h3 class="text-xl font-bold text-navy-900">AIを知らなかった私が<br>変われた理由</h3>
+            </div>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="font-bold text-navy-900 text-sm mb-1">① The Wall (課題)</h4>
+                    <p class="text-xs text-slate-600">業務に忙殺され、効率化の手段すら知らなかった過去。「これが仕事だ」と思い込み、手作業を繰り返す日々。</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-navy-900 text-sm mb-1">② The Shift (転換)</h4>
+                    <p class="text-xs text-slate-600">AIに触れ、コードを書かずに自動化ツールを作成。自分専用の「部下」ができた瞬間でした。</p>
+                </div>
+                <div class="bg-navy-900 p-4 rounded text-white">
+                    <h4 class="font-bold text-amber-500 text-sm mb-1">③ The Insight (気づき)</h4>
+                    <p class="text-xs text-slate-300">必要なのは技術力ではなく<strong class="text-white border-b border-amber-500">「AIへの頼み方」</strong>だけ。この事実こそが、希望です。</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="border-l-4 border-navy-900 pl-4 mb-4">
+                <span class="text-amber-600 font-bold text-xs uppercase block">03. Why Me</span>
+                <h3 class="text-xl font-bold text-navy-900">御社で発揮できる「翻訳力」</h3>
+            </div>
+            <p class="text-slate-600 mb-6 text-sm leading-7">
+                御社の「SIをやらない、伴走する」という姿勢。私の役割は、Microsoftの高度な技術を、現場が使える「日常の道具」に翻訳することです。
+            </p>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-white p-4 rounded shadow-sm">
+                    <h4 class="font-bold text-navy-900 text-sm">Empathy (共感)</h4>
+                    <p class="text-xs text-slate-600 mt-1">「AIなんて怖い」という食わず嫌いを、同じ目線で解きほぐします。</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow-sm">
+                    <h4 class="font-bold text-navy-900 text-sm">Empowerment (伴走)</h4>
+                    <p class="text-xs text-slate-600 mt-1">「これなら自分でやれる」と自走できるまで伴走します。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-navy-900 text-white p-8 rounded-xl text-center">
+            <span class="text-amber-500 font-bold text-xs uppercase mb-2 block">04. My Promise</span>
+            <h3 class="text-2xl font-bold mb-6">未知を楽しむ力</h3>
+            <p class="text-sm text-slate-300 leading-7 mb-8">
+                現在はGoogle環境がメインですが、御社のMicrosoft環境への移行に不安はありません。<br>
+                新しい道具もAIと共に3日あればマスターしてみせます。
+            </p>
+            
+            <div class="border-t border-navy-700 pt-6">
+                <p class="font-bold text-lg mb-4">Anyone Can Do This.</p>
+                
+                <button onclick="document.getElementById('hidden-msg').classList.remove('hidden');this.style.display='none'" class="bg-amber-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-amber-600 transition">
+                    ネタばらしを見る
+                </button>
+                
+                <div id="hidden-msg" class="hidden mt-6 bg-white text-slate-800 p-4 rounded text-left animate-fade-in">
+                    <p class="font-bold text-navy-900 text-sm mb-2">種明かし：AIというパートナー</p>
+                    <p class="text-xs leading-relaxed">
+                        このサイトも、コードは一切書いていません。AIに「やりたいこと」を伝えただけです。<br><br>
+                        私が御社に入社したら、クライアント様に自信を持ってこう伝えます。<br>
+                        <span class="font-bold text-amber-600 bg-amber-50">『プログラミングは覚えなくていい。AIへの頼み方だけ覚えれば、あなたも同じことができます』</span>と。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center text-xs text-slate-400 pb-8">
+        &copy; 2024 Portfolio for Low Code Inc.
+    </footer>
+
+</body>
+</html>
