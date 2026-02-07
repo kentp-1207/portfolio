@@ -23,9 +23,14 @@
     </script>
     <style>
         body { font-feature-settings: "palt"; }
-        /* 切り替え用の基本スタイル */
+        /* スクロールを確実に有効にする設定 */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100%;
+        }
+        /* 切り替え用のスタイル */
         .screen-section { display: none; }
-        /* アニメーション付きで表示 */
         .active-screen { display: block; animation: fadeIn 0.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -41,7 +46,7 @@
             </button>
             <h1 class="font-bold text-sm tracking-wider">PORTFOLIO</h1>
         </div>
-        </header>
+    </header>
 
     <nav id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-navy-900 text-white z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
         <div class="p-5 border-b border-navy-800 flex justify-between items-center">
@@ -55,32 +60,28 @@
             <button onclick="switchScreen('value')" class="w-full text-left px-4 py-3 rounded hover:bg-navy-800 font-bold text-sm">03 Why Me</button>
             <button onclick="switchScreen('promise')" class="w-full text-left px-4 py-3 rounded hover:bg-navy-800 font-bold text-sm">04 My Promise</button>
         </div>
-        <div class="p-4 text-xs text-slate-500 border-t border-navy-800 text-center">
-            &copy; 2024 AI Adoption Partner
-        </div>
     </nav>
     <div id="overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
-    <main class="pt-20 pb-20 px-6 min-h-screen">
+    <main class="pt-20 pb-20 px-6 w-full min-h-screen">
         
         <section id="hero" class="screen-section active-screen">
-            <div class="max-w-md mx-auto text-center pt-4">
-                
+            <div class="max-w-md mx-auto text-center pt-4 pb-12">
                 <div class="inline-block bg-navy-900 text-white px-5 py-2 rounded-full text-sm font-bold tracking-widest mb-8 shadow-lg">
                     For 株式会社Low Code
                 </div>
 
                 <p class="text-amber-500 font-bold text-xs uppercase mb-6 tracking-widest">AI Adoption Partner</p>
-                <h2 class="text-4xl font-bold text-navy-900 mb-8 leading-snug">
+                <h2 class="text-4xl font-bold text-navy-900 mb-12 leading-snug">
                     システムを売るな。<br>
                     <span class="border-b-4 border-amber-500 pb-1 inline-block">「自信」</span>を創れ。
                 </h2>
-                <div class="w-16 h-1 bg-amber-500 mx-auto mb-10"></div>
+                
                 <p class="text-slate-600 leading-9 text-lg mb-10">
                     現場が必要としているのは、高機能なツールではありません。<br><br>
                     「これなら私にもできる」という小さなきっかけと、隣で支えてくれるパートナーです。
                 </p>
-                <div class="bg-white p-4 rounded shadow-sm border border-slate-200 inline-block">
+                <div class="bg-white p-4 rounded shadow-sm border border-slate-200 inline-block mb-10">
                     <button onclick="toggleMenu()" class="text-sm text-navy-900 font-bold flex items-center justify-center gap-2">
                         <span>メニューを開く</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,7 +93,7 @@
         </section>
 
         <section id="origin" class="screen-section">
-            <div class="max-w-md mx-auto pt-4">
+            <div class="max-w-md mx-auto pt-4 pb-12">
                 <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">01. Origin Story</span>
                 <h3 class="text-2xl font-bold text-navy-900 mb-8 leading-tight">私は「エンジニア」ではありません。<br>「現・現場の当事者」です。</h3>
                 <div class="prose text-slate-600 leading-8 space-y-6">
@@ -104,7 +105,7 @@
         </section>
 
         <section id="case" class="screen-section">
-            <div class="max-w-md mx-auto w-full pt-4">
+            <div class="max-w-md mx-auto w-full pt-4 pb-12">
                 <div class="text-center mb-10">
                     <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">02. Case Study</span>
                     <h3 class="text-2xl font-bold text-navy-900 mt-2">AIを知らなかった私が<br>変われた理由</h3>
@@ -127,7 +128,7 @@
         </section>
 
         <section id="value" class="screen-section">
-            <div class="max-w-md mx-auto pt-4">
+            <div class="max-w-md mx-auto pt-4 pb-12">
                 <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">03. Why Me</span>
                 <h3 class="text-2xl font-bold text-navy-900 mb-8">御社で発揮できる<br>「翻訳力」</h3>
                 <p class="text-slate-600 mb-8 leading-8">
@@ -147,7 +148,7 @@
         </section>
 
         <section id="promise" class="screen-section">
-            <div class="max-w-md mx-auto pt-4 text-center">
+            <div class="max-w-md mx-auto pt-4 pb-12 text-center">
                 <div class="bg-navy-900 text-white p-8 rounded-2xl shadow-xl">
                     <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">04. My Promise</span>
                     <h3 class="text-2xl font-bold mb-8">未知を楽しむ力</h3>
@@ -177,11 +178,9 @@
     </main>
 
     <script>
-        // メニューの開閉
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
-            
             if (sidebar.classList.contains('-translate-x-full')) {
                 sidebar.classList.remove('-translate-x-full');
                 overlay.classList.remove('hidden');
@@ -191,25 +190,18 @@
             }
         }
 
-        // 画面切り替え
         function switchScreen(id) {
-            // 全てのセクションから active-screen を消す
             document.querySelectorAll('.screen-section').forEach(el => {
                 el.classList.remove('active-screen');
             });
-
-            // 指定されたIDに active-screen をつける
             const target = document.getElementById(id);
             if (target) {
                 target.classList.add('active-screen');
-                // ページの一番上にスクロール（これが重要）
                 window.scrollTo(0, 0);
             }
-            
-            toggleMenu(); // メニューを閉じる
+            toggleMenu();
         }
 
-        // ネタばらし表示
         function revealContent() {
             document.getElementById('reveal-btn').style.display = 'none';
             document.getElementById('hidden-content').classList.remove('hidden');
