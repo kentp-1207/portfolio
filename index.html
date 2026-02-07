@@ -12,93 +12,67 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['"Noto Sans JP"', 'sans-serif'] },
                     colors: {
-                        navy: {
-                            900: '#0f172a', // Base: Trust
-                            800: '#1e293b',
-                        },
-                        amber: {
-                            500: '#f59e0b', // Accent: Warmth & Empathy
-                            600: '#d97706',
-                        }
+                        navy: { 900: '#0f172a', 800: '#1e293b', 700: '#334155' },
+                        amber: { 500: '#f59e0b', 600: '#d97706' }
                     },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
+                    animation: { 'fade-in': 'fadeIn 0.5s ease-out forwards' },
+                    keyframes: { fadeIn: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } } }
                 }
             }
         }
     </script>
     <style>
-        html { scroll-behavior: smooth; }
         body { font-feature-settings: "palt"; }
-        .fade-init { opacity: 0; }
+        /* 非表示用クラス */
+        .hidden-screen { display: none; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased leading-relaxed">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased h-screen overflow-hidden flex flex-col">
 
-    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200 transition-all duration-300">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <h1 class="text-sm font-bold text-navy-900 tracking-wider">PORTFOLIO</h1>
-            <nav class="hidden md:flex space-x-8 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                <a href="#origin" class="hover:text-amber-500 transition">Origin</a>
-                <a href="#case" class="hover:text-amber-500 transition">Case Study</a>
-                <a href="#value" class="hover:text-amber-500 transition">Why Me</a>
-                <a href="#promise" class="hover:text-amber-500 transition">Promise</a>
-            </nav>
+    <header class="bg-navy-900 text-white h-16 flex items-center px-6 shadow-md z-50 shrink-0 justify-between">
+        <div class="flex items-center gap-4">
+            <button onclick="toggleMenu()" class="p-2 hover:bg-navy-800 rounded-lg focus:outline-none transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <h1 class="font-bold tracking-wider text-sm md:text-base">PORTFOLIO <span class="text-amber-500 text-xs font-normal ml-2">For Low Code Inc.</span></h1>
         </div>
+        <div id="current-page-label" class="text-xs font-bold text-slate-400 uppercase tracking-widest hidden md:block">TOP</div>
     </header>
 
-    <section class="min-h-[90vh] flex items-center justify-center pt-16 relative overflow-hidden bg-navy-900 text-white">
-        <div class="absolute top-0 right-0 w-2/3 h-full bg-navy-800 rounded-bl-full opacity-50 -z-10 translate-x-1/4"></div>
-        
-        <div class="max-w-4xl mx-auto px-6 text-center animate-fade-in-up">
-            <p class="text-amber-500 font-bold tracking-[0.2em] text-xs uppercase mb-6">AI Adoption Partner / For 株式会社Low Code</p>
-            <h2 class="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-                システムを売るな。<br>
-                <span class="text-amber-500 border-b-4 border-amber-500/30 pb-2">「自信」</span>を創れ。
-            </h2>
-            <div class="w-16 h-1 bg-amber-500 mx-auto mb-8"></div>
-            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-8 font-light">
-                現場が必要としているのは、高機能なツールではありません。<br>
-                「これなら私にもできる」という小さなきっかけと、<br class="hidden md:block">
-                隣で支えてくれるパートナーです。
-            </p>
+    <div id="sidebar-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity opacity-0"></div>
+    <nav id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-navy-900 text-white z-50 transform -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+        <div class="p-6 border-b border-navy-800 flex justify-between items-center">
+            <span class="font-bold text-lg tracking-widest">MENU</span>
+            <button onclick="toggleMenu()" class="text-slate-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
-    </section>
-
-    <section id="origin" class="py-24 bg-white">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">Origin Story</span>
-                <h3 class="text-2xl md:text-3xl font-bold text-navy-900 mt-2">私は「エンジニア」ではありません。<br>「現・現場の当事者」です。</h3>
-            </div>
-            
-            <div class="prose prose-lg text-slate-600 leading-8">
-                <p>
-                    代表のnoteにあった<span class="font-bold text-navy-900 bg-amber-100 px-1">「一人は辛い」</span>という言葉。その痛みを、私は誰よりも知っています。
-                </p>
-                <p>
-                    なぜなら私は今も、DXという言葉さえ知らないまま、膨大な事務作業と孤独に戦っている一人の実務担当者だからです。<br>
-                    壁にぶつかり、誰にも相談できず、残業だけが増えていく焦り。その気持ちが痛いほど分かります。
-                </p>
-                <p>
-                    だからこそ、私は上流から論理を振りかざすのではなく、現場の目線で「AIという相棒」を紹介することができます。<br>
-                    「便利ですよ」ではなく、「楽になりますよ、私がそうだったから」と。
-                </p>
-            </div>
+        <div class="flex-1 overflow-y-auto py-4">
+            <button onclick="switchScreen('hero', 'TOP')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 transition-all flex items-center gap-3">
+                <span class="text-amber-500 font-bold">00</span> Top / Hero
+            </button>
+            <button onclick="switchScreen('origin', 'Origin Story')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 transition-all flex items-center gap-3">
+                <span class="text-slate-400 font-bold">01</span> Origin Story
+            </button>
+            <button onclick="switchScreen('case', 'Case Study')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 transition-all flex items-center gap-3">
+                <span class="text-slate-400 font-bold">02</span> Case Study
+            </button>
+            <button onclick="switchScreen('value', 'Why Me')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 transition-all flex items-center gap-3">
+                <span class="text-slate-400 font-bold">03</span> Why Me
+            </button>
+            <button onclick="switchScreen('promise', 'My Promise')" class="w-full text-left px-6 py-4 hover:bg-navy-800 border-l-4 border-transparent hover:border-amber-500 transition-all flex items-center gap-3">
+                <span class="text-slate-400 font-bold">04</span> My Promise
+            </button>
         </div>
-    </section>
+        <div class="p-6 border-t border-navy-800 text-xs text-slate-500">
+            &copy; 2024 AI Adoption Partner
+        </div>
+    </nav>
 
-    <section id="case" class="py-24 bg-slate-50 border-t border-slate-200">
-        <div class="max-w-5xl mx-auto px-6">
-            <h3 class="text-3xl font-bold text-navy-900 mb-12 text-center">Case Study<br><span class="text-base font-normal text-slate-500">AIを知らなかった私が変われた理由</span></h3
+    <main id="main-container" class="flex-1 overflow-y-auto bg-slate-50 relative w-
