@@ -18,7 +18,7 @@
                         amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }
                     },
                     backgroundImage: {
-                        'hero-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                        'hero-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
                     }
                 }
             }
@@ -40,32 +40,85 @@
 
     <main class="pt-14">
         
-        <section class="bg-navy-900 text-white py-24 px-6 text-center relative overflow-hidden">
+        <section class="bg-navy-900 text-white py-24 px-8 text-center relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
             <div class="absolute inset-0 bg-hero-pattern opacity-30"></div>
             <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
             
-            <div class="max-w-md mx-auto relative z-10">
-                <div class="inline-block bg-white/10 backdrop-blur border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest mb-10 text-amber-400">
-                    For 株式会社Low Code
-                </div>
-
-                <h2 class="text-4xl md:text-5xl font-black mb-10 leading-tight">
-                    納品するのは、<br>システムじゃない。<br>
-                    現場の<span class="text-amber-500">「味方」</span>だ。
+            <div class="max-w-md mx-auto relative z-10 w-full">
+                
+                <h2 class="text-3xl md:text-4xl font-bold mb-16 tracking-widest border-b border-amber-500/30 pb-6 inline-block">
+                    株式会社Low Code 様へ
                 </h2>
                 
-                <p class="text-slate-300 leading-relaxed text-lg mb-10 font-medium">
-                    社長の<strong class="text-white">「一人は辛い」</strong>という信念。<br>
-                    現場で<strong class="text-white">「孤独」</strong>と戦ってきた私。<br><br>
-                    その痛みを誰よりも知っている私だからこそ、<br>
-                    御社の掲げる「伴走」を体現できます。
-                </p>
+                <div class="space-y-8 text-slate-300 leading-relaxed text-lg font-medium text-left">
+                    <p>
+                        私が納品したいのは、<br>
+                        単なる「システム」ではありません。
+                    </p>
+                    <p>
+                        現場の孤独を解消する<br>
+                        <span class="text-amber-500 font-bold text-2xl border-b-2 border-amber-500/50">「味方」</span>です。
+                    </p>
+                    <p class="text-base pt-4 border-t border-white/10">
+                        社長の<strong class="text-white">「一人は辛い」</strong>という信念。<br>
+                        現場で<strong class="text-white">「孤独」</strong>と戦ってきた私。
+                    </p>
+                    <p class="text-base">
+                        その痛みを誰よりも知っているからこそ、<br>
+                        御社の掲げる「伴走」を体現できます。
+                    </p>
+                </div>
                 
-                <div class="text-[10px] text-slate-500 uppercase tracking-[0.3em] font-bold">
+                <div class="mt-16 text-[10px] text-slate-500 uppercase tracking-[0.3em] font-bold text-center">
                     Scroll Down
                 </div>
-                <div class="mt-2 text-slate-500 animate-bounce">
+                <div class="mt-2 text-slate-500 animate-bounce text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7" /></svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-6 bg-white border-b border-slate-100">
+            <div class="max-w-md mx-auto">
+                <div class="text-center mb-8">
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-2">01. Who am I?</span>
+                    <h3 class="text-2xl font-bold text-navy-900">私のプロフィール</h3>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-navy-900 to-amber-500"></div>
+                    
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold tracking-widest uppercase mb-1">AGE / ROLE</p>
+                            <p class="text-xl font-bold text-navy-900">29歳 / 現場の実務担当</p>
+                        </div>
+                        <div class="bg-navy-900 text-white text-[10px] font-bold px-3 py-1 rounded-full">
+                            PROPOSER
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-600 leading-relaxed font-medium">
+                        <p>
+                            <span class="inline-block w-4 h-4 bg-amber-500 rounded-full mr-2 align-middle"></span>
+                            <strong>エンジニアではありません。</strong><br>
+                            プログラミングの専門教育は受けていません。<br>コードは書けませんが、AIへの「指示」は誰よりもうまいです。
+                        </p>
+                        <p>
+                            <span class="inline-block w-4 h-4 bg-navy-900 rounded-full mr-2 align-middle"></span>
+                            <strong>現場の痛みがわかります。</strong><br>
+                            日々の事務作業、理不尽な残業。その「辛さ」を知っているからこそ、本当に使える解決策を作れます。
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-slate-200">
+                        <p class="text-xs text-slate-400 font-bold tracking-widest uppercase mb-2">SKILL SET</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white border border-slate-200 text-navy-900 text-xs px-3 py-1 rounded-full font-bold">AI Prompting</span>
+                            <span class="bg-white border border-slate-200 text-navy-900 text-xs px-3 py-1 rounded-full font-bold">業務分解</span>
+                            <span class="bg-white border border-slate-200 text-navy-900 text-xs px-3 py-1 rounded-full font-bold">Python (Reading)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -73,7 +126,7 @@
         <section class="py-20 px-6 bg-white">
             <div class="max-w-md mx-auto">
                 <div class="text-center mb-8">
-                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">01. Origin Story</span>
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">02. Origin Story</span>
                     <h3 class="text-2xl font-bold text-navy-900 leading-tight">
                         私はスマートな<br>エンジニアではありません。<br>
                         泥臭い<span class="marker-highlight">「現場の当事者」</span>です。
@@ -101,7 +154,7 @@
         <section class="py-20 px-6 bg-slate-50 border-t border-slate-200">
             <div class="max-w-md mx-auto">
                 <div class="text-center mb-12">
-                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">02. Works & Vision</span>
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">03. Works & Vision</span>
                     <h3 class="text-2xl font-bold text-navy-900 mt-2">
                         現場の痛みから生まれた<br>
                         実装プロジェクト
@@ -150,7 +203,7 @@
             <div class="absolute inset-0 bg-hero-pattern opacity-10"></div>
             <div class="max-w-md mx-auto relative z-10">
                 <div class="text-center mb-12">
-                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">03. My Logic</span>
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">04. My Logic</span>
                     <h3 class="text-2xl font-bold mt-2">再現性のある<br>「思考の型」</h3>
                 </div>
                 <p class="text-slate-300 mb-10 text-sm leading-relaxed text-center">
@@ -195,7 +248,7 @@
         <section class="py-20 px-6 bg-white border-t border-slate-200">
             <div class="max-w-md mx-auto">
                 <div class="text-center mb-10">
-                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">04. Why Me</span>
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">05. Why Me</span>
                     <h3 class="text-2xl font-bold text-navy-900 mt-2 mb-8">御社で発揮できる<br>「翻訳力」</h3>
                 </div>
                 <p class="text-slate-600 mb-10 leading-8 font-medium">
@@ -216,7 +269,7 @@
 
         <section class="py-20 px-6 bg-navy-900 text-white text-center">
             <div class="max-w-md mx-auto">
-                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">05. My Promise</span>
+                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-4">06. My Promise</span>
                 <h3 class="text-3xl font-bold mb-8">未知を楽しむ力</h3>
                 <p class="leading-8 text-slate-300 mb-12 text-left bg-navy-800 p-6 rounded-xl border border-navy-700">
                     現在はGoogle環境がメインですが、御社のMicrosoft環境への移行に不安はありません。<br><br>
